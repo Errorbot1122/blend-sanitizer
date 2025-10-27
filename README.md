@@ -27,11 +27,11 @@ All you have to do is whenever your ready to share your `.blend` file, go to `Fi
 
 _Don't like the name `assets`?_ you can change it to whatever and wherever you want in the **Addon's Preferences menu**! _(`//` is substituted for the location of you `.blend` file)_
 
-![Preferences > Add-ons > Blend Sanitizer > Copy Path = "//assets"]()
+![Preferences > Add-ons > Blend Sanitizer > Copy Path = "//assets"](https://i.imgur.com/f4zVVBP.png)
 
 _Want more control over where each Datablock goes?_ Open the _Manage popup_ at `File > External Data > Manage Sanitize-able Data` and handle each file separately!
 
-![Gif of user using Manage Sanitize-able Data popup]()
+![Gif of user using Manage Sanitize-able Data popup](https://i.imgur.com/jFdniFO.gif)
 
 ---
 
