@@ -1,0 +1,6 @@
+{
+    "reportInvalidTypeForm": "none",
+    "reportIncompatibleMethodOverride": "none",
+    "reportPossiblyUnboundVariable": "warning",
+    "reportAttributeAccessIssue": "warning"
+}
