@@ -440,11 +440,6 @@ def draw_header(self, context: bpt.Context):
     layout.separator_spacer()
 
     row = layout.row(align=True)
-    row.prop(wm, "sanitizer_report_search", text="", icon="VIEWZOOM")
-
-    layout.separator_spacer()
-
-    row = layout.row(align=True)
     row.prop(wm, "sanitizer_report_show_hidden")
 
     row = layout.row(align=True)
@@ -747,9 +742,6 @@ def register():
 
     bpt.WindowManager.sanitizer_report_show_hidden = BoolProperty(
         name="Show Hidden", description="Show all hidden IDs", default=False
-    )
-    bpt.WindowManager.sanitizer_report_search = StringProperty(
-        name="Search", description="Filter by name"
     )
 
 
