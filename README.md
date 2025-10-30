@@ -48,27 +48,32 @@ _Wanna use the **"microtool"** yourself?_ Well here is how you **Installing it!*
 
 ---
 
-## Building
+## Setup
 
-Most people already know this, _but if you don't..._ **<small><small>(:eyes: Look out for _STEP 2_)</small></small>** here are the steps of how to build this project:
+Most people already know this, _but if you don't..._ **<small><small>(:eyes: Look out for _STEP 2_)</small></small>** here are the steps of how to setup this project:
 
 1.  Download the [source](github.com/Errorbot1122/blend-sanitizer).
-    ```sh
+    ```bash
     git clone github.com/Errorbot1122/blend-sanitizer.git
     cd blend-sanitizer
     ```
-2.  Install `requirements` in a **local directory**.
-    _<sub><sub>(So **Blender** can recognize external packages)</sub></sub>_
-    ```sh
-    mkdir site-packages
-    pip3 install --target ./site-packages/ -r requirements.txt
-    ```
-3.  Create a [virtual environment](https://docs.python.org/3/library/venv.html) for _development_.
-    ```sh
+2.  Create a [virtual environment](https://docs.python.org/3/library/venv.html) for _development_.
+    ```bash
     python3 -m venv .venv
     source .venv/bin/activate # On Windows: source .venv/Scripts/activate
     ```
-4.  Install `dev-requirements` in the _virtual environment_
-    ```sh
+3.  Install `dev-requirements` in the _virtual environment_
+    ```bash
     pip3 install -r dev-requirements.txt
     ```
+
+## Building
+
+To build the add-on run:
+
+```bash
+bash download_wheels.sh
+bash build.sh <path_to_blender_executable>
+```
+
+All builds will be placed in the `builds` folder.

@@ -11,7 +11,6 @@ bl_info = {
     "category": "System",
 }
 
-from pathlib import Path
 from typing import cast
 
 if "bpy" in locals():
