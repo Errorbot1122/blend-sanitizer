@@ -12,8 +12,8 @@ if [ -z "$2" ]; then
 fi
 
 
-set -euo pipefail
-
+set -uo pipefail
+shopt -s globstar dotglob
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 LOG_FILE="$(pwd)/tmp/dev_log.txt"
@@ -24,12 +24,10 @@ DEV_REPO_DIR="$(pwd)/tmp/dev_repo"
 VALID_PLATFORMS=("windows_x64" "macos_x64" "macos_arm64" "linux_x64" "linux_arm64")
 
 function clear_dir() {
-    local glob="${2:-*.zip}"
-    for file in "$1"/$glob; do
-        if [ ! -f "$file" ]; then continue; fi
-        rm -f "$file"
-    done
+    local glob="${2:-*}"
+    for file in "$1"/$glob; do rm -rf "$file"; done
 }
+
 
 echo "" > $LOG_FILE  # Clear log
 
@@ -42,8 +40,8 @@ fi
 
 echo -e "Regenerating Builds\n"
 blend_path="$1"
-echo -e "\n\"$SCRIPT_DIR\"/build.sh \"$blend_path\"" >> $LOG_FILE
-"$SCRIPT_DIR"/build.sh "$blend_path" >> $LOG_FILE
+echo -e "\n\"$SCRIPT_DIR\"/build.sh \"$blend_path\"" &>> $LOG_FILE
+"$SCRIPT_DIR"/build.sh "$blend_path" &>> $LOG_FILE
 
 
 # Check the given platform
@@ -57,18 +55,23 @@ fi
 
 
 echo -e "Generating Local Extension Repo\n"
-echo >> $LOG_FILE
-echo -e "\"$blend_path\" --command extension repo-remove vscode_development" >> $LOG_FILE
-"$blend_path" --command extension repo-remove vscode_development >> $LOG_FILE
-echo >> $LOG_FILE
-echo "\"$blend_path\" --command extension repo-add vscode_development --directory \"$DEV_REPO_DIR\"" >> $LOG_FILE
-"$blend_path" --command extension repo-add vscode_development --directory "$DEV_REPO_DIR" >> $LOG_FILE
-echo >> $LOG_FILE
-echo "\"$blend_path\" --command extension install-file \"$extension_zip\" --repo vscode_development --enable" >> $LOG_FILE
-"$blend_path" --command extension install-file "$extension_zip" --repo vscode_development --enable >> $LOG_FILE
+echo &>> $LOG_FILE
+echo -e "\"$blend_path\" --command extension repo-remove vscode_development" &>> $LOG_FILE
+"$blend_path" --command extension repo-remove vscode_development &>> $LOG_FILE
+clear_dir $DEV_REPO_DIR
+
+echo &>> $LOG_FILE
+echo "\"$blend_path\" --command extension repo-add vscode_development --directory \"$DEV_REPO_DIR\"" &>> $LOG_FILE
+"$blend_path" --command extension repo-add vscode_development --directory "$DEV_REPO_DIR" &>> $LOG_FILE
+echo &>> $LOG_FILE
+echo "\"$blend_path\" --command extension install-file \"$extension_zip\" --repo vscode_development --enable" &>> $LOG_FILE
+"$blend_path" --command extension install-file "$extension_zip" --repo vscode_development --enable &>> $LOG_FILE
 
 shift; shift; # Skip first 2 args in "$@"
 echo -e "\n---\n\n"
 
+
 echo -e "Opening Blender\n"
+
+set -e
 "$blend_path" $@

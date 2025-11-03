@@ -1,4 +1,5 @@
 set -euo pipefail
+shopt -s globstar dotglob
 
 EXTENSION_NAME="blend-sanitizer"
 
@@ -11,11 +12,8 @@ WHEELS_DIR="$(pwd)/$EXTENSION_NAME/.wheels"
 MANIFEST_FILE="$(pwd)/$EXTENSION_NAME/blender_manifest.toml"
 
 function clear_dir() {
-    local glob="${2:-*.zip}"
-    for file in "$1"/$glob; do
-        if [ ! -f "$file" ]; then continue; fi
-        rm -f "$file"
-    done
+    local glob="${2:-*}"
+    for file in "$1"/$glob; do rm -rf "$file"; done
 }
 
 echo -e "Fetching Python executable...\n"
