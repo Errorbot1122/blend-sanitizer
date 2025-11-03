@@ -1,13 +1,22 @@
 set -euo pipefail
 
+EXTENSION_NAME="blend-sanitizer"
+
 PYTHON_VERSION="3.11"
 CV2_VERSION="4.12.0.88"
 
-PLATFORM_LIST=("win_amd64" "manylinux_2_17_x86_64" "manylinux_2_17_aarch64" "macosx_13_0_x86_64" "macosx_13_0_arm64")
+PLATFORMS=("win_amd64" "manylinux_2_17_x86_64" "manylinux_2_17_aarch64" "macosx_13_0_x86_64" "macosx_13_0_arm64")
 
-WHEELS_DIR="$(pwd)/blend-sanitizer/.wheels"
-MANIFEST_FILE="$(pwd)/blend-sanitizer/blender_manifest.toml"
+WHEELS_DIR="$(pwd)/$EXTENSION_NAME/.wheels"
+MANIFEST_FILE="$(pwd)/$EXTENSION_NAME/blender_manifest.toml"
 
+function clear_dir() {
+    local glob="${1:-}"
+    for file in "$1"/$glob; do
+        if [ ! -f "$file" ]; then continue; fi
+        rm -f "$file"
+    done
+}
 
 echo -e "Fetching Python executable...\n"
 python_executable="$(pwd)/.venv/Scripts/python.exe"
@@ -20,16 +29,13 @@ fi
 
 if [[ -d $WHEELS_DIR ]]; then
     echo -e "Clearing old wheels...\n"
-    for file in "$WHEELS_DIR"/*.whl; do
-        if [ ! -f "$file" ]; then continue; fi
-        rm -f "$file"
-    done
+    clear_dir "$WHEELS_DIR" "*.whl"
 else
     mkdir -p $WHEELS_DIR
 fi
 
 echo -e "Downloading new wheels..."
-for platform in "${PLATFORM_LIST[@]}"; do
+for platform in "${PLATFORMS[@]}"; do
     echo -e "Downloading opencv-python==$CV2_VERSION for platform $platform..."
     "$python_executable" -m pip download "opencv-python==$CV2_VERSION" --dest $WHEELS_DIR --only-binary=:all: --python-version="$PYTHON_VERSION" --platform="$platform"  -q -q --no-input
 
