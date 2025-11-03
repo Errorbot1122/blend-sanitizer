@@ -24,7 +24,7 @@ DEV_REPO_DIR="$(pwd)/tmp/dev_repo"
 VALID_PLATFORMS=("windows_x64" "macos_x64" "macos_arm64" "linux_x64" "linux_arm64")
 
 function clear_dir() {
-    local glob="${1:-}"
+    local glob="${2:-*.zip}"
     for file in "$1"/$glob; do
         if [ ! -f "$file" ]; then continue; fi
         rm -f "$file"

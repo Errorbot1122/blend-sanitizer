@@ -11,7 +11,7 @@ WHEELS_DIR="$(pwd)/$EXTENSION_NAME/.wheels"
 MANIFEST_FILE="$(pwd)/$EXTENSION_NAME/blender_manifest.toml"
 
 function clear_dir() {
-    local glob="${1:-}"
+    local glob="${2:-*.zip}"
     for file in "$1"/$glob; do
         if [ ! -f "$file" ]; then continue; fi
         rm -f "$file"
