@@ -4,9 +4,7 @@
 
 > Made for _**Blender 4.2.7**_
 
-<br/>
-
-> [!WARNING!]
+> [!WARNING]
 > This project is sill vary much a in a _"barely"_ working state! If you have any issues, please feel free to check the [issue tracker](https://github.com/errorbot1122/blender-sanitizer/issue)!
 
 ---
