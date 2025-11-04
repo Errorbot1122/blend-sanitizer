@@ -39,7 +39,7 @@ _Want more control over where each Datablock goes?_ Open the _Manage popup_ at `
 
 _Wanna use the **"microtool"** yourself?_ Well here is how you **Installing it!**
 
-1.  _Download_ the **latest release** _<small><small>(top)</small></small>_ **zip [here](ADD RELEASE ZIP)**! <big>_**[!DO NOT EXTRACT!]**_</big>
+1.  _Download_ the **latest release** _<small><small>(top)</small></small>_ **zip [here](github.com/Errorbot1122/blend-sanitizer/releases/latest)**! <big>_**[!DO NOT EXTRACT!]**_</big>
 2.  _Launch_ **Blender 4.2**.
 3.  _Open_ `Preferences > Add-ons` then _hit_ the **small triangle button** on the _top-right_.
 4.  _Hit_ the `Install from Disk` _option_ and _select_ the **release zip**
@@ -65,9 +65,13 @@ _**List of features that need to be completed before a specific release**_
 
 ---
 
+## Contributing
+
+Here are some info for users who want to **contribute** to this _repo!_
+
 ### Setup
 
-Most people already know this, _but if you don't..._ **<small><small>(:eyes: Look out for _STEP 2_)</small></small>** here are the steps of how to setup this project:
+Most people already know this, _but if you don't..._ **<small><small>(👀 Look out for _STEP 2_)</small></small>** here are the steps of how to setup this project:
 
 1.  Download the [source](github.com/Errorbot1122/blend-sanitizer).
     ```bash
@@ -79,18 +83,26 @@ Most people already know this, _but if you don't..._ **<small><small>(:eyes: Loo
     python3 -m venv .venv
     source .venv/bin/activate # On Windows: source .venv/Scripts/activate
     ```
-3.  Install `dev-requirements` in the _virtual environment_
+3.  Install `dev-requirements` in the _virtual environment_.
     ```bash
     pip3 install -r dev-requirements.txt
     ```
 
 ### Building
 
-To build the add-on run:
+To **build** the **add-on** run:
 
 ```bash
-bash download_wheels.sh
-bash build.sh <path_to_blender_executable>
+bash scripts/download_wheels.sh
+bash scripts/build.sh <path_to_blender_executable>
 ```
 
 All builds will be placed in the `builds` folder.
+
+### Development/Testing
+
+To _quickly **rebuild**_, and run _(test)_ any changes, run:
+
+```bash
+bash scripts/dev.sh <path_to_blender_executable> <platform> [...blender args]
+```
