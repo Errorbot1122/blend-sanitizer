@@ -48,7 +48,24 @@ _Wanna use the **"microtool"** yourself?_ Well here is how you **Installing it!*
 
 ---
 
-## Setup
+## Roadmap
+
+_**List of features that need to be completed before a specific release**_
+
+### 1.0 Release
+
+- [ ] **More _Blender_ Parity** with manage popup
+  - [ ] **Icon Rendering**
+  - [ ] **Right-click Menu**
+  - [ ] **Improved Scrollbar** (Intractable, Rounded)
+  - etc
+- [ ] **Re-opening** with the **last known size** with manage popup
+- [ ] **Support** as much **_Blender_ versions** as possible _(Backwards and Forwards)_
+<!-- Idk weather we should add win-32 support... -->
+
+---
+
+### Setup
 
 Most people already know this, _but if you don't..._ **<small><small>(:eyes: Look out for _STEP 2_)</small></small>** here are the steps of how to setup this project:
 
@@ -67,7 +84,7 @@ Most people already know this, _but if you don't..._ **<small><small>(:eyes: Loo
     pip3 install -r dev-requirements.txt
     ```
 
-## Building
+### Building
 
 To build the add-on run:
 

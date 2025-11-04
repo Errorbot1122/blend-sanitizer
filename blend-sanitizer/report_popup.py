@@ -434,7 +434,6 @@ def draw_header(self, context: bpt.Context):
         ORIGINAL_VIEW3D_DRAW_HEADER(self, context)  # type: ignore
         return
 
-    # TODO: Add custom header
     layout.label(text='Review "Dirty" Datablocks')
 
     layout.separator_spacer()
