@@ -9,7 +9,7 @@
 
 ---
 
-If you didn't know, `.blender` files by default store **absolute paths** to _all external files used in the project_.
+If you didn't know, `.blend` files by default store **absolute paths** to _all external files used in the project_.
 
 This may seem like a non-issue at first, but these _paths_ give hints to _bad actors_ about **folder structure** and **folder names** leading towards each _external file_, eg. _your **Account Username** (Most likely your **real name**)_.
 
@@ -31,8 +31,6 @@ _Want more control over where each Datablock goes?_ Open the _Manage popup_ at `
 
 <img src="https://i.imgur.com/jFdniFO.gif" alt="Gif of user using Manage Sanitize-able Data popup">
 
----
-
 ## Installing
 
 _Wanna use the **"microtool"** yourself?_ Well here is how you **Installing it!**
@@ -43,8 +41,6 @@ _Wanna use the **"microtool"** yourself?_ Well here is how you **Installing it!*
 4.  _Hit_ the `Install from Disk` _option_ and _select_ the **release zip**
 5.  Make sure the _add-on_ is **enabled** and _not grayed out_ in the list of all your _installed add-ons_ <small>_(current menu)_</small>
     _(If you can find it search `Blend Sanitizer` in the search on the top)_
-
----
 
 ## Roadmap
 
@@ -60,8 +56,6 @@ _**List of features that need to be completed before a specific release**_
 - [ ] **Re-opening** with the **last known size** with manage popup
 - [ ] **Support** as much **_Blender_ versions** as possible _(Backwards and Forwards)_
 <!-- Idk weather we should add win-32 support... -->
-
----
 
 ## Contributing
 
